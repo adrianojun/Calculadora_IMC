@@ -28,8 +28,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   TextEditingController heightController = TextEditingController();
   TextEditingController weightController = TextEditingController();
-  double imc = 0.0;
-  String result = '';
+  
+  var result ;
 
   @override
   Widget build(BuildContext context) {
@@ -155,6 +155,8 @@ class _MyHomePageState extends State<MyHomePage> {
   void calculateBMI() {
     double height = double.tryParse(heightController.text) ?? 0.0;
     double weight = double.tryParse(weightController.text) ?? 0.0;
+    double imc = 0.0;
+    String result = '';
     
     if ((height >= 1.0 && height <= 2.40) && (weight >= 35.0 && weight <= 160.0)) {
       imc = weight / (height * height);
