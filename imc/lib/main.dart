@@ -28,6 +28,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   TextEditingController heightController = TextEditingController();
   TextEditingController weightController = TextEditingController();
+  double imc = 0.0;
   String result = '';
 
   @override
@@ -56,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
               TextFormField(
                 controller: heightController,
                 decoration: InputDecoration(
-                  labelText: 'ALTURA (EX:1.70)',
+                  labelText: 'ALTURA(cm) (EX:1.70)',
                   labelStyle: TextStyle(
                     color: Color(0xFF9A9FD0),
                     fontSize: 16,
@@ -73,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
               TextFormField(
                 controller: weightController,
                 decoration: InputDecoration(
-                  labelText: 'PESO (EX:80)',
+                  labelText: 'PESO(kg) (EX:80)',
                   labelStyle: TextStyle(
                     color: Color(0xFF9A9FD0),
                     fontSize: 16,
@@ -100,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       });
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFFE67B17),
+                      backgroundColor: Color(0xFFE67B17),
                     ),
                     child: Text(
                       'Limpar',
@@ -118,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       calculateBMI();
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFF1F255E),
+                      backgroundColor: Color(0xFF1F255E),
                     ),
                     child: Text(
                       'Calcular',
@@ -154,15 +155,43 @@ class _MyHomePageState extends State<MyHomePage> {
   void calculateBMI() {
     double height = double.tryParse(heightController.text) ?? 0.0;
     double weight = double.tryParse(weightController.text) ?? 0.0;
-
-    if (height > 0 && weight > 0) {
-      double bmi = weight / (height * height);
-      setState(() {
-        result = 'Seu IMC é: ${bmi.toStringAsFixed(2)}';
-      });
+    
+    if ((height >= 1.0 && height <= 2.40) && (weight >= 35.0 && weight <= 160.0)) {
+      imc = weight / (height * height);
+      if (imc < 18.5) {
+        result = 'Abaixo de Peso - ${imc.toStringAsFixed(2)}';
+        setState(() {
+          result;
+        });
+      } else if (imc >= 18.5 && imc <= 24.9) {
+        result = 'Peso saudável - ${imc.toStringAsFixed(2)}kg/m²';
+        setState(() {
+          result;
+        });
+      } else if (imc >= 25.0 && imc <= 29.9) {
+        result = 'Sobrepeso - ${imc.toStringAsFixed(2)}kg/m²';
+        setState(() {
+          result;
+        });
+      } else if (imc >= 30.0 && imc <= 34.9) {
+        result = 'Obesidade Leve - ${imc.toStringAsFixed(2)}kg/m²';
+        setState(() {
+          result;
+        });
+      } else if (imc > 35.0 && imc <= 39.9) {
+        result = 'Obesidade Moderada - ${imc.toStringAsFixed(2)}kg/m²';
+        setState(() {
+          result;
+        });
+      } else if (imc >= 40.0) {
+        result = 'Obesidade Moderada - ${imc.toStringAsFixed(2)}kg/m²';
+        setState(() {
+        result;
+        });
+      }
     } else {
       setState(() {
-        result = 'Por favor, insira valores válidos para altura e peso.';
+        result = 'Por favor, insira valores válidos para altura e peso!!!';
       });
     }
   }
