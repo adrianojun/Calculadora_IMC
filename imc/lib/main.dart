@@ -29,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
   TextEditingController heightController = TextEditingController();
   TextEditingController weightController = TextEditingController();
   
-  String result = '' ;
+  String category = '' ;
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       heightController.clear();
                       weightController.clear();
                       setState(() {
-                        result = ''; // Limpar o resultado
+                        category = ''; // Limpar o resultado
                       });
                     },
                     style: ElevatedButton.styleFrom(
@@ -134,9 +134,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
               SizedBox(height: 16),
-              // Saída de dados (Resultado do IMC)
+              // Saída de dados (resultado do IMC)
               Text(
-                result,
+                category,
                 style: TextStyle(
                   color: Colors.white, // Cor do texto do resultado do IMC
                   fontSize: 20,
@@ -161,39 +161,39 @@ class _MyHomePageState extends State<MyHomePage> {
     if ((height >= 1.0 && height <= 2.40) && (weight >= 35.0 && weight <= 160.0)) {
       imc = weight / (height * height);
       if (imc < 18.5) {
-        result = '${imc.toStringAsFixed(2)}kg/m² - Abaixo de Peso :(';
+        category = '${imc.toStringAsFixed(2)}kg/m² - Abaixo de Peso :(';
         setState(() {
-          result;
+          category;
         });
       } else if (imc >= 18.5 && imc <= 24.9) {
-        result = '${imc.toStringAsFixed(2)}kg/m² - Peso saudável :)';
+        category = '${imc.toStringAsFixed(2)}kg/m² - Peso saudável :)';
         setState(() {
-          result;
+          category;
         });
       } else if (imc >= 25.0 && imc <= 29.9) {
-        result = '${imc.toStringAsFixed(2)}kg/m² - Sobrepeso :(';
+        category = '${imc.toStringAsFixed(2)}kg/m² - Sobrepeso :(';
         setState(() {
-          result;
+          category;
         });
       } else if (imc >= 30.0 && imc <= 34.9) {
-        result = '${imc.toStringAsFixed(2)}kg/m² - Obesidade Leve!';
+        category = '${imc.toStringAsFixed(2)}kg/m² - Obesidade Leve!';
         setState(() {
-          result;
+          category;
         });
       } else if (imc > 35.0 && imc <= 39.9) {
-        result = '${imc.toStringAsFixed(2)}kg/m² - Obesidade Moderada!!';
+        category = '${imc.toStringAsFixed(2)}kg/m² - Obesidade Moderada!!';
         setState(() {
-          result;
+          category;
         });
       } else if (imc >= 40.0) {
-        result = ' ${imc.toStringAsFixed(2)}kg/m² - Obesidade Severa!!!';
+        category = ' ${imc.toStringAsFixed(2)}kg/m² - Obesidade Severa!!!';
         setState(() {
-        result;
+        category;
         });
       }
     } else {
       setState(() {
-        result = 'Por favor, insira valores válidos para altura e peso!!!';
+        category = 'Por favor, insira valores válidos para altura e peso!!!';
       });
     }
   }
