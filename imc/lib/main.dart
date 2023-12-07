@@ -29,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
   TextEditingController heightController = TextEditingController();
   TextEditingController weightController = TextEditingController();
   
-  var result ;
+  String result = '' ;
 
   @override
   Widget build(BuildContext context) {
@@ -156,37 +156,37 @@ class _MyHomePageState extends State<MyHomePage> {
     double height = double.tryParse(heightController.text) ?? 0.0;
     double weight = double.tryParse(weightController.text) ?? 0.0;
     double imc = 0.0;
-    String result = '';
+    
     
     if ((height >= 1.0 && height <= 2.40) && (weight >= 35.0 && weight <= 160.0)) {
       imc = weight / (height * height);
       if (imc < 18.5) {
-        result = 'Abaixo de Peso - ${imc.toStringAsFixed(2)}';
+        result = '${imc.toStringAsFixed(2)}kg/m² - Abaixo de Peso :(';
         setState(() {
           result;
         });
       } else if (imc >= 18.5 && imc <= 24.9) {
-        result = 'Peso saudável - ${imc.toStringAsFixed(2)}kg/m²';
+        result = '${imc.toStringAsFixed(2)}kg/m² - Peso saudável :)';
         setState(() {
           result;
         });
       } else if (imc >= 25.0 && imc <= 29.9) {
-        result = 'Sobrepeso - ${imc.toStringAsFixed(2)}kg/m²';
+        result = '${imc.toStringAsFixed(2)}kg/m² - Sobrepeso :(';
         setState(() {
           result;
         });
       } else if (imc >= 30.0 && imc <= 34.9) {
-        result = 'Obesidade Leve - ${imc.toStringAsFixed(2)}kg/m²';
+        result = '${imc.toStringAsFixed(2)}kg/m² - Obesidade Leve!';
         setState(() {
           result;
         });
       } else if (imc > 35.0 && imc <= 39.9) {
-        result = 'Obesidade Moderada - ${imc.toStringAsFixed(2)}kg/m²';
+        result = '${imc.toStringAsFixed(2)}kg/m² - Obesidade Moderada!!';
         setState(() {
           result;
         });
       } else if (imc >= 40.0) {
-        result = 'Obesidade Moderada - ${imc.toStringAsFixed(2)}kg/m²';
+        result = ' ${imc.toStringAsFixed(2)}kg/m² - Obesidade Severa!!!';
         setState(() {
         result;
         });
