@@ -97,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       heightController.clear();
                       weightController.clear();
                       setState(() {
-                        result = ''; // Limpar o resultado
+                       result = ''; // Limpar o resultado
                       });
                     },
                     style: ElevatedButton.styleFrom(
@@ -134,7 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
               SizedBox(height: 16),
-              // Saída de dados (Resultado do IMC)
+              // Saída de dados (resultado do IMC)
               Text(
                 result,
                 style: TextStyle(
