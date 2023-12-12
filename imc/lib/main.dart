@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Color(0xFF353A40),
       ),
       backgroundColor: Color(0xFF353A40),
-      body: SingleChildScrollView(
+      body: SingleChildScrollView(>
         child: Container(
           width: 360,
           padding: const EdgeInsets.all(16),
