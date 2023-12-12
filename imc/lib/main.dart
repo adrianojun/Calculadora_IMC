@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
               TextFormField(
                 controller: heightController,
                 decoration: InputDecoration(
-                  labelText: 'ALTURA(cm) (EX:1.70)',
+                  labelText: 'ALTURA(m) (EX:1.70)',
                   labelStyle: TextStyle(
                     color: Color(0xFF9A9FD0),
                     fontSize: 16,
